@@ -1,0 +1,66 @@
+git clone https://github.com/kubernetes/kubernetes
+cd kubernetes
+make
+
+kubernetesのバージョンは1.19.16です。go言語のバージョンは何でもいいですか
+ChatGPT
+Kubernetesのリポジトリをクローンし、そのバージョンが1.19.16であることを確認しましたね。Go言語のバージョンについては、Kubernetesのバージョン1.19.xでは、Go 1.15.xが推奨されていますが、Go 1.16.xなど、1.15.x以降のバージョンでも動作する可能性があります。ですので、Go言語のバージョンは1.15.x以上なら問題ありません。
+
+go言語をubuntuにインストールするには
+ChatGPT
+UbuntuにGo言語をインストールする方法はいくつかありますが、最も一般的な方法は公式のGoバイナリをダウンロードしてインストールすることです。以下に、手順を示します。
+
+公式のGo言語のウェブサイト（https://golang.org/dl/）から最新のGo言語のバイナリをダウンロードします。バージョン1.15.x以上をお勧めします。
+ダウンロードしたアーカイブを解凍します。たとえば、tarコマンドを使用して解凍できます。
+bash
+Copy code
+tar -C /usr/local -xzf <ダウンロードしたファイル名>
+tarコマンドで解凍した後、/usr/local/go/binにGoの実行可能ファイルがあります。このディレクトリをPATHに追加して、コマンドラインからGoを直接実行できるようにします。
+bash
+Copy code
+export PATH=$PATH:/usr/local/go/bin
+最後に、go versionコマンドを実行して、インストールが正しく行われたことを確認します。
+bash
+Copy code
+go version
+これでGo言語がUbuntuにインストールされました。
+
+この状態で以下を実行すればいいですか
+
+git clone https://github.com/kubernetes/kubernetes
+cd kubernetes
+make
+ChatGPT
+はい、Go言語がUbuntuにインストールされ、kubectlとmakeコマンドも利用可能な状態であれば、指示通りに以下のコマンドを実行することができます。
+
+bash
+Copy code
+git clone https://github.com/kubernetes/kubernetes
+cd kubernetes
+make
+これにより、Kubernetesのソースコードがクローンされ、その後makeコマンドが実行されてビルドが開始されます。必要な依存関係やツールがインストールされていることを確認してから、上記の手順を実行してください。
+
+カレントディレクトリにビルドされますか？
+ChatGPT
+Kubernetesのビルドは、通常はカレントディレクトリには直接ビルドされません。ビルドされたバイナリは、通常は_outputディレクトリ内に生成されます。ビルドが完了すると、生成されたバイナリはこのディレクトリに配置されます。
+
+詳しく
+ChatGPT
+申し訳ありません、誤解がありました。Kubernetesのビルドについて詳細を説明します。
+
+Kubernetesのビルドプロセスでは、ビルドされたバイナリは通常、_outputディレクトリに生成されます。このディレクトリは、Kubernetesのソースコードリポジトリ内にあります。
+
+具体的には、以下のようなディレクトリ構造になります。
+
+python
+Copy code
+kubernetes/
+├── _output/
+│   ├── bin/
+│   │   ├── kubectl
+│   │   └── kube-apiserver
+│   │   ...
+│   └── ...
+├── ...
+└── ...
+ビルドが完了すると、生成されたバイナリは_output/bin/ディレクトリに配置されます。これにより、ビルドされたバイナリがカレントディレクトリではなく、_output/bin/ディレクトリに格納されることになります。
